@@ -1,0 +1,27 @@
+﻿body
+{
+	background-color:black;
+	color: white;
+	font-family: Arial, Helvetica, sans-serif;
+}
+.menuHeading{
+	border-style: solid;
+	margin: auto;
+	text-align: center;
+}
+#menuTable{
+	margin: auto;
+}
+#presetHeading{
+	margin: auto;
+	text-align: center;
+	padding-bottom: 20px;
+}
+#txtWidth{
+	align: center;
+}
+#divMapToString{
+	border-style: solid;
+	margin: auto;
+	text-align: center;
+}

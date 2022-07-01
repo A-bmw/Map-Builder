@@ -6,10 +6,12 @@
   <script src="lib/astar.js"></script>
   <script src="lib/graph.js"></script>
   <script src="lib/binaryheap.js"></script>
-   
+  <head>
+    <link rel="stylesheet" href="css/style.css">
+  </head>
   <body>
 
-    <div>
+    <div id="presetHeading">
       Presets:
       <a href="javascript: 
                document.getElementById('txtWidth').value = 20;
@@ -30,8 +32,8 @@
 
     </div>
 
-    <div>
-      <table>
+    <div class="menuHeading" id="menuHeading">
+      <table class="menuTable" id="menuTable">
         <tr>
           <td>Map Size</td>
           <td><input type=text id="txtWidth" size=5 value=50> x <input type=text id="txtHeight" size=5 value=50></td>
@@ -53,47 +55,47 @@
     <div id="divMapToString" style="font-family: monospace;">
       Loading...  
     </div>
-    
-    <script>
+
+        <script>
 
 
 
       
-      var utils = new Utils();
-      var options = {'mapTileWidth':50,'mapTileHeight':50};
+          var utils = new Utils();
+          var options = {'mapTileWidth':50,'mapTileHeight':50};
       
-      var map = new Map(options);
+          var map = new Map(options);
       
-      map.init();
+          map.init();
       
-      map.addRandomRooms(3);
+          map.addRandomRooms(3);
       
-      refreshDisplay();
+          refreshDisplay();
       
 
-      function refreshDisplay()
-      {
-        document.getElementById("divMapToString").innerHTML = "";
-        document.getElementById("divMapToString").innerHTML = map.toHTML();
-      }
+          function refreshDisplay()
+          {
+            document.getElementById("divMapToString").innerHTML = "";
+            document.getElementById("divMapToString").innerHTML = map.toHTML();
+          }
       
-      function genMap()
-      {
-        var options = {'mapTileWidth':document.getElementById("txtWidth").value,'mapTileHeight':document.getElementById("txtHeight").value};
+          function genMap()
+          {
+            var options = {'mapTileWidth':document.getElementById("txtWidth").value,'mapTileHeight':document.getElementById("txtHeight").value};
       
-        map = new Map(options);
+            map = new Map(options);
       
-        map.init();
+            map.init();
         
-        map.resetMap();
+            map.resetMap();
         
-        map.addRandomRooms(document.getElementById("txtNumRooms").value);
+            map.addRandomRooms(document.getElementById("txtNumRooms").value);
         
-        refreshDisplay();
+            refreshDisplay();
         
-      }
+          }
       
       
-    </script>
+        </script>
   </body>
 </html>
