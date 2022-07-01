@@ -1,0 +1,99 @@
+<html>
+  
+  <script src="js/map.class.js"></script>
+  <script src="js/utils.class.js"></script>
+  <script src="lib/seedrandom.min.js"></script>
+  <script src="lib/astar.js"></script>
+  <script src="lib/graph.js"></script>
+  <script src="lib/binaryheap.js"></script>
+   
+  <body>
+
+    <div>
+      Presets:
+      <a href="javascript: 
+               document.getElementById('txtWidth').value = 20;
+               document.getElementById('txtHeight').value = 20;
+               document.getElementById('txtNumRooms').value = 1;
+               genMap();
+               void(0);
+               ">single room</a>  
+      | <a href="javascript: 
+               document.getElementById('txtWidth').value = 50;
+               document.getElementById('txtHeight').value = 50;
+               document.getElementById('txtNumRooms').value = 5;
+               genMap();
+               void(0);
+               ">medium map</a>        
+      | <a href="javascript: map.resetMap();map.addRandomRooms(3);refreshDisplay();void(0);">random rooms</a>  
+      | <a href="javascript: utils.resetRandomizer();void(0);">reseed</a>  
+
+    </div>
+
+    <div>
+      <table>
+        <tr>
+          <td>Map Size</td>
+          <td><input type=text id="txtWidth" size=5 value=50> x <input type=text id="txtHeight" size=5 value=50></td>
+        </tr>
+        <tr>
+          <td>Num Rooms</td>
+          <td><input type=text id="txtNumRooms" size=5 value=3></td>
+        </tr>
+        <tr>
+          <td colspan=2>
+          <button onclick="genMap();">
+            Generate Map
+            </button>
+          </td>
+        </tr>
+      </table>      
+    </div>
+    
+    <div id="divMapToString" style="font-family: monospace;">
+      Loading...  
+    </div>
+    
+    <script>
+
+
+
+      
+      var utils = new Utils();
+      var options = {'mapTileWidth':50,'mapTileHeight':50};
+      
+      var map = new Map(options);
+      
+      map.init();
+      
+      map.addRandomRooms(3);
+      
+      refreshDisplay();
+      
+
+      function refreshDisplay()
+      {
+        document.getElementById("divMapToString").innerHTML = "";
+        document.getElementById("divMapToString").innerHTML = map.toHTML();
+      }
+      
+      function genMap()
+      {
+        var options = {'mapTileWidth':document.getElementById("txtWidth").value,'mapTileHeight':document.getElementById("txtHeight").value};
+      
+        map = new Map(options);
+      
+        map.init();
+        
+        map.resetMap();
+        
+        map.addRandomRooms(document.getElementById("txtNumRooms").value);
+        
+        refreshDisplay();
+        
+      }
+      
+      
+    </script>
+  </body>
+</html>
